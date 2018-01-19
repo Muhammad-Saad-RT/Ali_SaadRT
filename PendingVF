@@ -7,7 +7,7 @@
         </script>
         
         <!--1. Personal Information here-->
-        <apex:pageBlock id="personalInfo">
+        <apex:pageBlock id="personalInfo" rendered="{! if(PersonalInfo.FirstName == '' || PersonalInfo.selected == '' || NewContact.Birthdate == null ,true,false)}">
             <h3>Personal Information</h3>
             <apex:pageBlockSection id="section1" collapsible="true" title="Remaining Personal Information">
                 
@@ -66,7 +66,7 @@
         
         
         <!-- 2. Contact Information here -->
-        <apex:pageBlock id="contactInfo" >
+        <apex:pageBlock id="contactInfo" rendered="{! if(ContactInfo.HomePhone == '' || ContactInfo.OtherPhone == '' || ContactInfo.Fax == '' ,true,false)}">
            <h3>Contact Information</h3>
            <apex:pageBlockSection id="section1" collapsible="true" title="Remaining Contact Information">
                <apex:outputPanel rendered="{! if(ContactInfo.Phone == '',true,false)}">
@@ -108,7 +108,7 @@
            
        </apex:pageBlock>
         
-        <!-- 3. Related To Information here -->
+        <!-- 3. Related To Information here 
         <apex:pageBlock id="relatedTo">
             <h3>Related to Information</h3>
             <apex:pageBlockSection id="section1" collapsible="true" title="Remaining Related to Information">
@@ -141,20 +141,20 @@
                 </apex:outputPanel>
                 
                 <apex:outputPanel ></apex:outputPanel>
-                <!--<apex:outputPanel >
+                <apex:outputPanel >
                     <apex:commandButton value="Previous" action="/apex/ContactInformation"/>
                     <apex:commandButton value="Next" action="/apex/AddressInformation"/>
-                </apex:outputPanel>-->
+                </apex:outputPanel>
             </apex:pageBlockSection>
             
         </apex:pageBlock>
-        
+        -->
         
         <!-- 4. Address Information here -->
-        <apex:pageBlock id="addressInfo">
+        <apex:pageBlock id="addressInfo" rendered="{! if(AddressInfo.mailingStreet == '' || AddressInfo.mailingCity == '' || AddressInfo.mailingState == '' || AddressInfo.mailingPostalCode == '' || AddressInfo.mailingCountry == '' || AddressInfo.otherStreet == '' || AddressInfo.otherCity == '' || AddressInfo.otherState == '' || AddressInfo.otherPostalCode == '' || AddressInfo.otherCountry == '' ,true,false)}">
             <h3>Address Information</h3>
             <apex:pageBlockSection id="section1" collapsible="true" title="Remaining Address Information">
-                <apex:outputPanel rendered="{! if(RelatedToInfo.SelectedContact == '',true,false)}">
+                <apex:outputPanel rendered="{! if(AddressInfo.mailingStreet == '',true,false)}">
                     <p>
                         Mailing Address
                     </p>
@@ -236,7 +236,7 @@
         </apex:pageBlock>
         
         <!-- 5. Additional Information here -->
-        <apex:pageBlock id="additionalInfo">
+        <apex:pageBlock id="additionalInfo" rendered="{! if(AdditionalInfo.Language == '' || AdditionalInfo.Description == '',true,false)}">
            <h3>Additional Information</h3>
            <apex:pageBlockSection id="section1" collapsible="true" title="Remaining Additional Information">
                <apex:outputPanel rendered="{! if(AdditionalInfo.Language == '',true,false)}">
